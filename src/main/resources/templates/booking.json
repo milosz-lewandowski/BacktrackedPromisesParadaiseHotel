@@ -1,0 +1,18 @@
+{
+  "title": "Booking",
+  "description": "booking data",
+  "type": "object",
+  "properties": {
+    "bookingId": "integer",
+    "guest": {
+      "guestId": "integer",
+      "firstName": "string",
+      "surname": "string",
+      "phoneNumber": "string"
+    },
+    "room": {
+      "roomId": "integer",
+      "roomNumber": "string"
+    }
+  }
+}
