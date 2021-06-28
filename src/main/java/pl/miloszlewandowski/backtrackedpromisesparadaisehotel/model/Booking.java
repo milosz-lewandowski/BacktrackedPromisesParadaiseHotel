@@ -5,26 +5,30 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "bookings", schema = "PUBLIC")
-public class Booking {
+public class Booking implements BookingInfo{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer bookingId;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "guest_id")
     private Guest guest;
     @OneToOne
     private Room room;
 
-    public Booking() {
+    public Booking(Guest guest, Room room) {
     }
 
     public Booking(Integer bookingId, Guest guest, Room room) {
         this.bookingId = bookingId;
         this.guest = guest;
         this.room = room;
-//        this.bookingStart = bookingStart;
     }
+
+    public Booking() {
+    }
+
+
 
     public Integer getBookingId() {
         return bookingId;
@@ -60,4 +64,15 @@ public class Booking {
                 ", bookingStart=" +
                 '}';
     }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
+
 }
