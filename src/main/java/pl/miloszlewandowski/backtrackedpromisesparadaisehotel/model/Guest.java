@@ -1,10 +1,11 @@
 package pl.miloszlewandowski.backtrackedpromisesparadaisehotel.model;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "guests", schema = "PUBLIC")
-public class Guest {
+public class Guest implements BookingInfo.GuestInfo{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,7 +24,7 @@ public class Guest {
         this.phoneNumber = phoneNumber;
     }
 
-    public Integer getGuestId() {
+    public Integer getInfoGuestId() {
         return guestId;
     }
 
@@ -63,5 +64,15 @@ public class Guest {
                 ", surname='" + surname + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
     }
 }

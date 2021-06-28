@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "rooms", schema = "PUBLIC")
-public class Room {
+public class Room implements BookingInfo.RoomInfo{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,7 +19,7 @@ public class Room {
         this.roomNumber = roomNumber;
     }
 
-    public Integer getRoomId() {
+    public Integer getInfoRoomId() {
         return roomId;
     }
 
@@ -41,5 +41,15 @@ public class Room {
                 "roomId=" + roomId +
                 ", roomNumber='" + roomNumber + '\'' +
                 '}';
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
     }
 }
