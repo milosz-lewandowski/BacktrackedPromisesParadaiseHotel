@@ -3,38 +3,35 @@ package pl.miloszlewandowski.backtrackedpromisesparadaisehotel.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "rooms")
+@Table(name = "rooms", schema = "PUBLIC")
 public class Room {
 
-    //TODO: consider case
-
-
     @Id
-    private long roomId;
-    @Column
-    private int roomNumber;
-
-    public Room(long roomId, int roomNumber) {
-        this.roomId = roomId;
-        this.roomNumber = roomNumber;
-    }
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer roomId;
+    private String roomNumber;
 
     public Room() {
     }
 
-    public long getRoomId() {
+    public Room(Integer roomId, String roomNumber) {
+        this.roomId = roomId;
+        this.roomNumber = roomNumber;
+    }
+
+    public Integer getRoomId() {
         return roomId;
     }
 
-    public void setRoomId(long roomId) {
+    public void setRoomId(Integer roomId) {
         this.roomId = roomId;
     }
 
-    public int getRoomNumber() {
+    public String getRoomNumber() {
         return roomNumber;
     }
 
-    public void setRoomNumber(int roomNumber) {
+    public void setRoomNumber(String roomNumber) {
         this.roomNumber = roomNumber;
     }
 
@@ -42,7 +39,7 @@ public class Room {
     public String toString() {
         return "Room{" +
                 "roomId=" + roomId +
-                ", roomNumber=" + roomNumber +
+                ", roomNumber='" + roomNumber + '\'' +
                 '}';
     }
 }

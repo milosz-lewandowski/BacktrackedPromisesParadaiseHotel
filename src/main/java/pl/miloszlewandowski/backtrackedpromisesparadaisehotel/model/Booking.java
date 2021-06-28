@@ -1,42 +1,37 @@
 package pl.miloszlewandowski.backtrackedpromisesparadaisehotel.model;
 
+
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "bookings")
+@Table(name = "bookings", schema = "PUBLIC")
 public class Booking {
-
-    //TODO: consider case
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long BookingId;
+    private Integer bookingId;
     @ManyToOne
-    @JoinColumn(name = "GuestId")
+    @JoinColumn(name = "guest_id")
     private Guest guest;
     @OneToOne
     private Room room;
-    //    @Column
-    //    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    //    private LocalDateTime bookingStart;
-
 
     public Booking() {
     }
 
-    public Booking(long bookingId, Guest guest, Room room) {
-        BookingId = bookingId;
+    public Booking(Integer bookingId, Guest guest, Room room) {
+        this.bookingId = bookingId;
         this.guest = guest;
         this.room = room;
+//        this.bookingStart = bookingStart;
     }
 
-    public long getBookingId() {
-        return BookingId;
+    public Integer getBookingId() {
+        return bookingId;
     }
 
-    public void setBookingId(long bookingId) {
-        BookingId = bookingId;
+    public void setBookingId(Integer bookingId) {
+        this.bookingId = bookingId;
     }
 
     public Guest getGuest() {
@@ -55,12 +50,14 @@ public class Booking {
         this.room = room;
     }
 
+
     @Override
     public String toString() {
         return "Booking{" +
-                "BookingId=" + BookingId +
+                "bookingId=" + bookingId +
                 ", guest=" + guest +
                 ", room=" + room +
+                ", bookingStart=" +
                 '}';
     }
 }
