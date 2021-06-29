@@ -2,6 +2,8 @@ drop table if exists public.bookings CASCADE;
 drop table if exists public.guests CASCADE;
 drop table if exists public.rooms CASCADE;
 
+drop sequence if exists hibernate_sequence;
+
 create table public.bookings
 (
     booking_id   integer not null auto_increment,
@@ -26,6 +28,7 @@ create table public.rooms
     primary key (room_id)
 );
 
+
 alter table public.rooms
     add constraint UK_7ljglxlj90ln3lbas4kl983m2 unique (room_number);
 
@@ -38,6 +41,8 @@ alter table public.bookings
     add constraint FKrrqbdy8kgocfh3uerpcj2k9j2
         foreign key (room_room_id)
             references public.rooms;
+
+-- create sequence hibernate_sequence increment by 1;
 
 insert into PUBLIC.GUESTS (FIRST_NAME, SURNAME, PHONE_NUMBER)
 VALUES ('g1', 'g1', '997');
