@@ -1,0 +1,17 @@
+POST http://localhost:8080/bookings
+Content-Type: application/json
+
+{
+  "guest": {
+    "guestId": 3
+  },
+  "room": {
+    "roomId": 3
+  }
+}
+
+###
+GET http://localhost:8080/bookings
+
+###
+GET http://localhost:8080/bookings/{{id}}
