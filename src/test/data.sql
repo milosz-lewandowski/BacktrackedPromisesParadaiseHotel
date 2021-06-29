@@ -1,5 +1,0 @@
-INSERT INTO
-    GUESTS (GUEST_ID, FIRST_NAME, SURNAME, PHONE_NUMBER)
-VALUES
-(1, "Adam", "Małysz", "123456789"),
-(2, "Mariusz", "Pudzianowski", "234567890");
