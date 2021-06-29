@@ -1,0 +1,8 @@
+{
+  "guest": {
+    "guestId": "integer"
+  },
+  "room": {
+    "roomId": "integer"
+  }
+}
