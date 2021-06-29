@@ -1,30 +1,33 @@
 package pl.miloszlewandowski.backtrackedpromisesparadaisehotel.model;
 
+import pl.miloszlewandowski.backtrackedpromisesparadaisehotel.helpers.BookingInfo;
+
 import javax.persistence.*;
-import java.util.Objects;
 
 @Entity
 @Table(name = "guests", schema = "PUBLIC")
-public class Guest implements BookingInfo.GuestInfo{
+public class Guest implements BookingInfo.GuestInfo {
+
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, unique = true)
     private Integer guestId;
     private String firstName;
-    private String surname;
+    private String lastName;
     private String phoneNumber;
 
     public Guest() {
     }
 
-    public Guest(Integer guestId, String firstName, String surname, String phoneNumber) {
+    public Guest(Integer guestId, String firstName, String lastName, String phoneNumber) {
         this.guestId = guestId;
         this.firstName = firstName;
-        this.surname = surname;
+        this.lastName = lastName;
         this.phoneNumber = phoneNumber;
     }
 
-    public Integer getInfoGuestId() {
+    public Integer getGuestId() {
         return guestId;
     }
 
@@ -40,12 +43,12 @@ public class Guest implements BookingInfo.GuestInfo{
         this.firstName = firstName;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setLastName(String surname) {
+        this.lastName = surname;
     }
 
     public String getPhoneNumber() {
@@ -61,7 +64,7 @@ public class Guest implements BookingInfo.GuestInfo{
         return "Guest{" +
                 "guestId=" + guestId +
                 ", firstName='" + firstName + '\'' +
-                ", surname='" + surname + '\'' +
+                ", surname='" + lastName + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
     }

@@ -1,13 +1,16 @@
 package pl.miloszlewandowski.backtrackedpromisesparadaisehotel.model;
 
+import pl.miloszlewandowski.backtrackedpromisesparadaisehotel.helpers.BookingInfo;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "rooms", schema = "PUBLIC")
-public class Room implements BookingInfo.RoomInfo{
+public class Room implements BookingInfo.RoomInfo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, unique = true)
     private Integer roomId;
     private String roomNumber;
 
@@ -19,7 +22,7 @@ public class Room implements BookingInfo.RoomInfo{
         this.roomNumber = roomNumber;
     }
 
-    public Integer getInfoRoomId() {
+    public Integer getRoomId() {
         return roomId;
     }
 

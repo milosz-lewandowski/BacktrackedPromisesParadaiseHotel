@@ -1,20 +1,27 @@
 package pl.miloszlewandowski.backtrackedpromisesparadaisehotel.model;
 
 
+import pl.miloszlewandowski.backtrackedpromisesparadaisehotel.helpers.BookingInfo;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "bookings", schema = "PUBLIC")
-public class Booking implements BookingInfo{
+public class Booking implements BookingInfo {
 
+    @Column(nullable = false, unique = true)
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer bookingId;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "guest_id")
     private Guest guest;
     @OneToOne
     private Room room;
+
+    public void setBookingId(Integer bookingId) {
+        this.bookingId = bookingId;
+    }
 
     public Booking(Guest guest, Room room) {
     }
@@ -29,13 +36,8 @@ public class Booking implements BookingInfo{
     }
 
 
-
     public Integer getBookingId() {
         return bookingId;
-    }
-
-    public void setBookingId(Integer bookingId) {
-        this.bookingId = bookingId;
     }
 
     public Guest getGuest() {
